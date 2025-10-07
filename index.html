@@ -3,50 +3,133 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sovan Lim | Web Name Card</title>
+
+<!-- Use Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-  :root { --fg:#0b1320; --muted:#4b5563; --link:#2563eb; }
-  *{box-sizing:border-box} body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial}
-  .wrap{min-height:100vh;display:grid;place-items:center;background:#f6f7fb;padding:24px}
-  .card{width:min(720px,100%);background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px 28px;text-align:center}
-  img.avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:10px}
-  h1{margin:0;font-size:28px;color:var(--fg)}
-  .role{margin:6px 0 12px;color:var(--muted);font-weight:500}
-  p{margin:10px 0;color:#111827;line-height:1.5}
-  .links a{display:inline-block;margin:8px 10px 0;color:var(--link);text-decoration:none;font-weight:500}
-  .qr{margin-top:24px}
-  footer{margin-top:20px;font-size:13px;color:var(--muted)}
+  :root {
+    --fg: #0b1320;
+    --muted: #4b5563;
+    --link: #2563eb;
+    --bg: #f6f7fb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, Segoe UI, Roboto, Arial;
+    background: var(--bg);
+  }
+
+  .wrap {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+
+  .card {
+    width: min(720px, 100%);
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  img.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #e5e7eb;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    color: var(--fg);
+  }
+
+  .role {
+    margin: 6px 0 14px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  p {
+    margin: 10px 0;
+    color: #111827;
+    line-height: 1.6;
+  }
+
+  /* --- links --- */
+  .links {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .links a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #eff6ff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .links a:hover {
+    background: #dbeafe;
+    transform: translateY(-2px);
+  }
+
+  .links i {
+    font-size: 18px;
+  }
+
+  footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
 </style>
 
 <body>
   <div class="wrap">
     <main class="card">
-      <img class="avatar" src="https://avatars.githubusercontent.com/u/160012445?v=4" alt="Sovan Lim">
-      <h1>Sovan Lim</h1>
-      <p class="role">Information Electronics Student @ Nagano Kosen</p>
+      <img class="avatar" src="NameCardProfile.jpg" alt="Sovan Lim">
+      <h1>リム　ソワン</h1>
+      <p class="role">情報エレクトロニクス系 @ 長野高専</p>
+
       <p>
-        I’m an Information Electronics student passionate about sensors, embedded systems, and Rust programming.
-        Building projects like IoT devices, fitness data systems, and puzzle solvers.
+        私はカンボジア出身の留学生で、現在、4年生で長野高専で情報電子を専攻しています。
+        今年の高専プロコン2025に参加できることを、とても嬉しく思っています。
       </p>
 
       <div class="links">
-        <a href="https://github.com/So-van" target="_blank">GitHub</a>
-      </div>
-
-      <div class="qr">
-        <p>Scan this QR to open my page:</p>
-        <!-- point to your PAGES site, not profile -->
-        <a href="https://so-van.github.io" target="_blank">
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://so-van.github.io"
-            alt="QR to https://so-van.github.io"
-            width="200" height="200"
-            style="max-width:100%;height:auto">
+        <a href="https://github.com/So-van" target="_blank">
+          <i class="fab fa-github"></i> GitHub
         </a>
-        <p><a href="https://so-van.github.io" target="_blank">https://so-van.github.io</a></p>
+        <a href="https://www.instagram.com/_v.a.n_l?igsh=M2NlYWN3cXhjMnho&utm_source=qr" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
       </div>
-
-      <footer>© 2025 Sovan Lim | <a href="https://so-van.github.io">so-van.github.io</a></footer>
     </main>
   </div>
 </body>
 </html>
+
+
