@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sovan Lim | Web Name Card</title>
+<style>
+  :root { --fg:#0b1320; --muted:#4b5563; --link:#2563eb; }
+  *{box-sizing:border-box} body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial}
+  .wrap{min-height:100vh;display:grid;place-items:center;background:#f6f7fb;padding:24px}
+  .card{width:min(720px,100%);background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px 28px;text-align:center}
+  img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:10px}
+  h1{margin:0;font-size:28px;color:var(--fg)}
+  .role{margin:6px 0 12px;color:var(--muted);font-weight:500}
+  p{margin:10px 0;color:#111827;line-height:1.5}
+  .links a{display:inline-block;margin:8px 10px 0;color:var(--link);text-decoration:none;font-weight:500}
+  .qr{margin-top:24px}
+  footer{margin-top:20px;font-size:13px;color:var(--muted)}
+</style>
+
+<body>
+  <div class="wrap">
+    <main class="card">
+      <img src="https://avatars.githubusercontent.com/u/160012445?v=4" alt="Sovan Lim">
+      <h1>Sovan Lim</h1>
+      <p class="role">Information Electronics Student @ Nagano Kosen</p>
+      <p>
+        I’m an Information Electronics student passionate about sensors, embedded systems, and Rust programming.
+        Building projects like IoT devices, fitness data systems, and puzzle solvers.
+      </p>
+
+      <div class="links">
+
+        <a href="https://github.com/So-van" target="_blank">GitHub</a>
+
+      </div>
+
+      <div class="qr">
+        <p>Scan my QR to visit this page:</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://So-van.github.io" alt="QR code to my page">
+      </div>
+
+      <footer>© 2025 Sovan Lim | <a href="https://So-van.github.io" style="color:#4b5563;text-decoration:none">So-van.github.io</a></footer>
+    </main>
+  </div>
+</body>
+</html>
