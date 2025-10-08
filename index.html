@@ -1,135 +1,233 @@
 <!doctype html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sovan Lim | Web Name Card</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sovan Lim | Web Name Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- Use Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --card-width: 91mm;
+      --card-height: 55mm;
+      --fg: #111827;
+      --muted: #4b5563;
+      --primary: #2563eb;
+      --border: #e5e7eb;
+      --bg: #f3f4f6;
+      --card-bg: #ffffff;
+    }
 
-<style>
-  :root {
-    --fg: #0b1320;
-    --muted: #4b5563;
-    --link: #2563eb;
-    --bg: #f6f7fb;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: system-ui, Segoe UI, Roboto, Arial;
-    background: var(--bg);
-  }
+    * { box-sizing: border-box; }
 
-  .wrap {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: 24px;
-  }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      background: var(--bg);
+      font-family: 'Inter', system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  .card {
-    width: min(720px, 100%);
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 32px 28px;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  }
+    /* Card container with modern styling */
+    .card {
+      width: var(--card-width);
+      height: var(--card-height);
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 7mm;
+      display: flex;
+      align-items: center;
+      gap: 7mm;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,.08), 0 4px 6px -4px rgba(0,0,0,.07);
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
 
-  img.avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border: 3px solid #e5e7eb;
-  }
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px -6px rgba(0,0,0,.1), 0 5px 8px -5px rgba(0,0,0,.08);
+    }
 
-  h1 {
-    margin: 0;
-    font-size: 28px;
-    color: var(--fg);
-  }
+    /* Right column: Avatar and QR code */
+    .side {
+      width: 26mm;
+      flex: 0 0 26mm; /* Prevents this column from shrinking */
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5mm; /* Adjusted gap for better balance */
+    }
 
-  .role {
-    margin: 6px 0 14px;
-    color: var(--muted);
-    font-weight: 500;
-  }
+    img.avatar {
+      width: 24mm;
+      height: 24mm;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
 
-  p {
-    margin: 10px 0;
-    color: #111827;
-    line-height: 1.6;
-  }
+    .qr {
+      width: 18mm;
+      height: 18mm;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
 
-  /* --- links --- */
-  .links {
-    margin-top: 18px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
+    /* Wrapper to group QR code and "Scan Me" text */
+    .qr-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5mm;
+    }
 
-  .links a {
-    color: var(--link);
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #eff6ff;
-    padding: 8px 14px;
-    border-radius: 8px;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
+    .scan-me {
+      margin: 0;
+      font-size: 7pt;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
-  .links a:hover {
-    background: #dbeafe;
-    transform: translateY(-2px);
-  }
+    /* Left column: Text information */
+    .info {
+      min-width: 0; /* Allows text to shrink and wrap correctly */
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5mm;
+      height: 100%;
+    }
 
-  .links i {
-    font-size: 18px;
-  }
+    /* Wrapper for name and role with accent line */
+    .name-wrapper {
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 2mm;
+        margin-bottom: 1mm;
+    }
 
-  footer {
-    margin-top: 20px;
-    font-size: 13px;
-    color: var(--muted);
-  }
-</style>
+    .name {
+      margin: 0;
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .role {
+      margin: 0;
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .desc {
+      margin: 0;
+      font-size: 8pt;
+      color: #374151;
+      line-height: 1.4;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3; /* Clamps text to 3 lines */
+    }
+
+    /* Links container, pushed to the bottom */
+    .links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2mm;
+      margin-top: auto; /* This pushes the links to the bottom of the flex container */
+    }
+
+    .links a {
+      color: var(--muted);
+      font-size: 8.5pt;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5mm;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      transition: color 0.2s ease-in-out;
+    }
+
+    .links a:hover {
+      color: var(--primary);
+    }
+
+    .links i {
+      font-size: 10pt;
+      flex: 0 0 auto;
+      width: 12px; /* Ensures icons are aligned */
+      text-align: center;
+    }
+
+    .greeting { display: none; } /* Hiding the original greeting as it's not needed in this design */
+
+    /* Print-specific styles */
+    @media print {
+      body { background: none; margin: 0; }
+      .card { box-shadow: none; border: 1px solid #ddd; border-radius: 0; }
+    }
+  </style>
+</head>
 
 <body>
-  <div class="wrap">
-    <main class="card">
-      <img class="avatar" src="NameCardProfile.jpg" alt="Sovan Lim">
-      <h1>リム　ソワン</h1>
-      <p class="role">情報エレクトロニクス系 @ 長野高専</p>
+  <main class="card" aria-label="Business Card">
 
-      <p>
-        私はカンボジア出身の留学生で、現在、4年生で長野高専で情報電子を専攻しています。
-        今年の高専プロコン2025に参加できることを、とても嬉しく思っています。
+    <!-- LEFT: Text information -->
+    <section class="info">
+      <div class="name-wrapper">
+        <h1 class="name">リム　ソワン</h1>
+        <p class="role">情報系 @ 長野高専</p>
+      </div>
+
+      <p class="desc">
+        カンボジア出身の4年生です。高専プロコン2025に参加できて嬉しいです。Happy to see you all !
       </p>
 
-      <div class="links">
-        <a href="https://github.com/So-van" target="_blank">
-          <i class="fab fa-github"></i> GitHub
+      <nav class="links" aria-label="Profiles">
+        <a href="https://github.com/So-van" target="_blank" rel="noopener">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span>So-van</span>
         </a>
-        <a href="https://www.instagram.com/_v.a.n_l?igsh=M2NlYWN3cXhjMnho&utm_source=qr" target="_blank">
-          <i class="fab fa-instagram"></i> Instagram
+        <a href="https://www.instagram.com/_v.a.n_l" target="_blank" rel="noopener">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
+          <span>@_v.a.n_l</span>
         </a>
+      </nav>
+    </section>
+
+    <!-- RIGHT: Photo + QR Code -->
+    <aside class="side">
+      <img class="avatar" src="NameCardProfile.jpg" alt="Sovan Lim" onerror="this.onerror=null;this.src='https://placehold.co/200x200/e0e0e0/757575?text=Sovan';">
+      <div class="qr-wrapper">
+        <img class="qr"
+             src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://so-van.github.io"
+             alt="QR to website">
+        <p class="scan-me">Scan Me</p>
       </div>
-    </main>
-  </div>
+    </aside>
+
+  </main>
 </body>
 </html>
-
 
